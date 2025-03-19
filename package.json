@@ -1,0 +1,33 @@
+{
+  "name": "nmste-react",
+  "version": "1.0.0",
+  "description": "learning react akshay saini",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mujtaba07/react-projects.git"
+  },
+  "keywords": [],
+  "author": "Mujtaba Sayyed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mujtaba07/react-projects/issues"
+  },
+  "homepage": "https://github.com/mujtaba07/react-projects#readme",
+  "devDependencies": {
+    "parcel": "^2.14.1"
+  },
+  "dependencies": {
+    "@parcel/transformer-react-refresh-wrap": "^2.14.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.3.0"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ]
+}
