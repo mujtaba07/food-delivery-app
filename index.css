@@ -8,6 +8,7 @@
 .header{
     display: flex;
     justify-content: space-between;
+    -ms-flex-align: center;
     align-items: center;
 }
 .header .nav-items ul li {
@@ -28,22 +29,11 @@
     justify-content: center;
     align-items: center;
 }
-.res-card{
-    padding: 10px;
-    max-width: 300px;
-    width: 100%;
-    border-radius: 1.5rem;
-    border: 0.1rem solid rgb(232, 232, 232);
-    &:hover{
-        border-color: rgb(232, 232, 232);
-        box-shadow: rgba(28, 28, 28, 0.10) 0px 0.1rem 1.8rem;
-    }
-}
+
 .res-card img{
     width: 100%;
     border-radius: 1.5rem;
     object-fit: contain;
-    transform: none;
     opacity: 1;
     will-change: transform, opacity;
     filter: unset;
@@ -114,12 +104,26 @@
     padding: 10px 10px;
 }
 .restaurant-container{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    -ms-grid-columns: (1fr)[4];
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 25px;
     width: 100%;
     margin: 3.6rem 0px;
-    justify-content: flex-start;
+}
+.res-card{
+    padding: 10px;
+    border-radius: 1.5rem;
+    border: 0.1rem solid rgb(232, 232, 232);
+    &:hover{
+        border-color: rgb(232, 232, 232);
+        box-shadow: rgba(28, 28, 28, 0.10) 0px 0.1rem 1.8rem;
+    }
+}
+.restaurant-container a{
+    max-width: 400px;
+    width: 100%;
+    text-decoration: none;
 }
 .card-image{
     min-height: 200px;
@@ -196,4 +200,77 @@
 }
 .res-type span:last-child{
     width: 35%;
+}
+.res-menu-img img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 1.5rem;
+    margin: 0 auto;
+}
+.display-menu{
+    border-top: 1px solid rgb(232, 232, 232);
+    padding: 16px 0px;
+    margin: 24px 16px 16px 16px;
+   
+}
+p{
+    margin: 10px 0;
+}
+.container{
+    max-width: 800px;
+    min-height: 800px;
+    margin: 20px auto 0;
+}
+.menu{
+    text-align: center;
+}
+.display-menu ul{
+    padding: unset;
+}
+.display-menu ul li{
+    list-style: none;
+    padding: 8px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(232, 232, 232);
+}
+.dish-item-description{
+    font-size: 0.75rem;
+    width: 70%;
+}
+.dish-image{
+    object-fit: cover;
+    border-radius: 12px;
+    height: 144px;
+}
+.cuisines{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.35px;
+    color: rgb(255, 82, 0);
+    margin: 0px auto;
+    text-decoration: underline;
+}
+.res-details-wrapper{
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(2, 6, 12, 0.15);
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 8px 16px 0px;
+}
+.location{
+    color: rgba(2, 6, 12, 0.6);
+}
+.res-details{
+    font-weight: 700;
+}
+.nav-items ul li a{
+    text-decoration: none;
+    color: #333;
+    &:hover{
+        text-decoration: underline;
+    }
 }
