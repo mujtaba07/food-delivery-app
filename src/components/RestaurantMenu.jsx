@@ -1,45 +1,12 @@
-import React from "react";
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
-import { MENU_API } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
   let { resId } = useParams();
   console.log(resId);
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    try {
-      const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-      // const targetUrl = `${MENU_API}${resId}`;
-      const targetUrl = MENU_API + resId;
-      let response = await fetch(proxyUrl + targetUrl, {
-        method: "GET",
-        headers: {
-          "X-Requested-With": "XMLHttpRequest",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const contentType = response.headers.get("content-type");
-      if (contentType && contentType.includes("application/json")) {
-        let json = await response.json();
-        setResInfo(json.data);
-      } else {
-        throw new Error("Response is not JSON");
-      }
-    } catch (err) {
-      console.error("Error fetching data:", err);
-    }
-  };
-
-  console.log(resInfo);
+  
+ const resInfo = useRestaurantMenu(resId);
 
   if (!resInfo) return <Shimmer />;
 
@@ -54,7 +21,7 @@ const RestaurantMenu = () => {
     cloudinaryImageId,
   } = resInfo?.cards[2]?.card?.card?.info;
                       
-  const itemCard =resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards || resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards;
+  const itemCard =resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards || resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards || resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card?.itemCards || resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card?.card?.itemCards;
   console.log(itemCard);
   return (
     <div className="container">

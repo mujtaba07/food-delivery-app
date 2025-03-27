@@ -3,46 +3,13 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import useGetRestaurants from "../utils/useGetRestaurants";
 const Body = () => {
   
-  
-  let [restaurantList, setRestaurantList] = useState([]);
-  let [filteredRestaurant, setFilteredRestaurant] = useState([]);
   let [inputText, setInputText] = useState("");
   
-  useEffect(() => {
-    console.log("useEffect");
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-      const targetUrl = 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
-
-      let response = await fetch(proxyUrl + targetUrl, {
-        method: 'GET',
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest',
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const contentType = response.headers.get('content-type');
-      if (contentType && contentType.includes('application/json')) {
-        let data = await response.json();
-        setRestaurantList(data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
-        setFilteredRestaurant(data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
-      } else {
-        throw new Error('Response is not JSON');
-      }
-    } catch (err) {
-      console.error('Error fetching data:', err);
-    }
-  };
+  const [restaurantList, filteredRestaurant, setFilteredRestaurant] = useGetRestaurants();
   
   let getTopRatedRestaurants = () => {
     let topRatedRestaurants = restaurantList?.filter((restaurant) => {
@@ -50,7 +17,12 @@ const Body = () => {
     });
     setFilteredRestaurant(topRatedRestaurants);
   };
-  console.log(restaurantList)
+
+  const onlineStatus = useOnlineStatus();
+  
+  if(onlineStatus === false){
+    return <h1>You Are Currently Offline, Kindly Check your internet connection</h1>
+  }
   return restaurantList.length === 0 ?<Shimmer/> :  (
     <div className="body">
       <div className="filter">

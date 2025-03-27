@@ -2,9 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import {LOGO_URL} from '../utils/constants';
 import { Link } from 'react-router';
+import useOnlineStatus from '../utils/useOnlineStatus';
 const Header = () => {
     // let loginBtn = "Log in"
     let [loginBtn, setLoginBtn] = useState( "Log in")
+    let onlineStatus = useOnlineStatus();
     return (
         <div className="header">
           <div className="logo">
@@ -12,17 +14,18 @@ const Header = () => {
           </div>
           <div className="nav-items">
             <ul className="ul">
+              <li>Status : {onlineStatus ? "Online" : "Offline"}</li>
               <li className="li" >
                 <Link to="/">Home</Link>
-                {/* <a href="/">Home</a> */}
               </li>
               <li className="li">
                 <Link to="/about">About</Link>
-                {/* <a href="/about">About</a> */}
               </li>
               <li className="li">
                 <Link to="/contact">Contact</Link>
-                {/* <a href="/contact">Contact</a> */}
+              </li>
+              <li className="li">
+                <Link to="/grocery">Grocery</Link>
               </li>
               <button className='login-btn' onClick={()=>{
                 loginBtn === "Log in" ? setLoginBtn("Log out") : setLoginBtn("Log in")

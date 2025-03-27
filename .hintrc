@@ -9,7 +9,8 @@
       {
         "ignore": [
           "object-fit",
-          "object-fit: cover"
+          "object-fit: cover",
+          "grid-template-columns"
         ]
       }
     ]
