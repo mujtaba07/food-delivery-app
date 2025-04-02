@@ -1,5 +1,5 @@
 import React from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard , {withPromotedLabel} from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
@@ -17,7 +17,9 @@ const Body = () => {
     });
     setFilteredRestaurant(topRatedRestaurants);
   };
-
+  
+  let PromotedRestaurant = withPromotedLabel(RestaurantCard);
+console.log(restaurantList)
   const onlineStatus = useOnlineStatus();
   
   if(onlineStatus === false){
@@ -45,9 +47,10 @@ const Body = () => {
       <div className="m-[calc(7%+52px)] restaurant-container grid grid-cols-5 gap-8 my-10 p-0 items-start">
         {filteredRestaurant.map((restaurant) => {
           return (
-            <Link className="items-start"  key={restaurant?.info?.id}
+            <Link className="items-start w-full"  key={restaurant?.info?.id}
                    to={"/restaurants/"+ restaurant?.info?.id}>
-                  <RestaurantCard cardData={restaurant} />
+                  {restaurant?.data?.promoted ? <PromotedRestaurant cardData={restaurant} /> : <RestaurantCard cardData={restaurant} />}
+                 {/* <RestaurantCard cardData={restaurant} /> */}
             </Link>
           );
         })}
