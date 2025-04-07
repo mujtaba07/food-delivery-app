@@ -4,7 +4,6 @@ const useGetRestaurants = () => {
   let [restaurantList, setRestaurantList] = useState([]);
   let [filteredRestaurant, setFilteredRestaurant] = useState([]);
     useEffect(() => {
-        console.log("useEffect");
         fetchData();
       }, []);
     

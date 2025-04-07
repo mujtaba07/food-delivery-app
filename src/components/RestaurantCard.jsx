@@ -1,8 +1,11 @@
+import { useContext } from "react"
+import UserContext from "../utils/UserContext"
+
 const RestaurantCard = (props) => {
     const {cardData} = props
     const {info} = cardData
     const {cfo,name,sla,avgRating,costForTwo} = info
-
+    const {LoggedInUser} = useContext(UserContext)
   return (
     <div className="grid transition duration-[50ms] cursor-pointer gap-3 grid-flow-row justify-items-stretch items-center p-0 bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-[1.01]">
       <div className="card-image">   
@@ -20,6 +23,7 @@ const RestaurantCard = (props) => {
       <div className="deliver-time">
         <span className="font-extrabold">{sla ? `${sla.deliveryTime} mins` : 'N/A'}</span>
       </div>
+      <div>User:{LoggedInUser}</div>
     </div>
    </div>
   );

@@ -1,10 +1,8 @@
 import ItemsList from './ItemsList'
 import { useState } from 'react';
-const RestaurantCategory = ({item}) => {
-    const [showItems, setShowItems] = useState(false);
+const RestaurantCategory = ({item,showItems,setShowIndex}) => {
     const handleClick = () => {
-        console.log("clicked")
-        setShowItems(!showItems);
+        setShowIndex();
     }
   return (
         <div className="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-400 ease-in-out my-4" id="">

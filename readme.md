@@ -51,3 +51,13 @@ componentwillUnmount()
 ________________________________________
 
 after all this the componentdidmount() runs and all the data is rendered on to the page after that componentdidupdate() runs and then componentwillunmount() runs as you change the page or the component is removed from the page
+
+
+##########
+higher order functions
+state uplifting (moving child state to parents)
+
+
+<!-- create use context - -->
+create use context - use context
+update use context - usercontext.provider value={objkey}
