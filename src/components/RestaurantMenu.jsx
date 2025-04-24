@@ -28,11 +28,11 @@ const RestaurantMenu = () => {
   // console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
     
   const cardCategories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((category)=>{
-    console.log(category?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+    // console.log(category?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
      return category?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   })
   
-  console.log(cardCategories)
+  // console.log(cardCategories)
   
   return (
     <div className="max-w-[800px] min-h-[800px] my-5 mx-auto">

@@ -1,6 +1,6 @@
 import ItemsList from './ItemsList'
 import { useState } from 'react';
-const RestaurantCategory = ({item,showItems,setShowIndex}) => {
+const RestaurantCategory = ({item,showItems,setShowIndex,addBtn}) => {
     const handleClick = () => {
         setShowIndex();
     }
@@ -13,7 +13,7 @@ const RestaurantCategory = ({item,showItems,setShowIndex}) => {
                         </span>
                     </div>
             </div>
-            { showItems && <ItemsList item={item.card.card.itemCards} />}
+            { showItems && <ItemsList addBtn ={true} item={item.card.card.itemCards} />}
         </div>
   )
 }

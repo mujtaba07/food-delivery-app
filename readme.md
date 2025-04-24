@@ -61,3 +61,7 @@ state uplifting (moving child state to parents)
 <!-- create use context - -->
 create use context - use context
 update use context - usercontext.provider value={objkey}
+
+<!-- implementing redux -->
+*adding item to card*
+when you click on the add button -> dispatch(action) -> function call(reducer) -> modify slice(array)
