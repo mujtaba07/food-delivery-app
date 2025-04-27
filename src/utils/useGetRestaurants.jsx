@@ -9,7 +9,7 @@ const useGetRestaurants = () => {
     
       const fetchData = async () => {
         try {
-          const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+          const proxyUrl = 'https://corsproxy.io/?';
           const targetUrl = 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
     
           let response = await fetch(proxyUrl + targetUrl, {
